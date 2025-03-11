@@ -29,7 +29,7 @@ select
                         else 999 end
                      ) as registration_order
 -- select *
-from {{source('athena','PATIENT')}} as patient
+from {{ source('athena','PATIENT')}} as patient
 inner join {{source('athena','CLIENT')}} as client
 on patient.patientid = client.clientid and patient.contextid = client.contextid
 left join {{source('athena','PATIENTRACE')}} as patientrace

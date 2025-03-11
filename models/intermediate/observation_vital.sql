@@ -9,6 +9,8 @@ select
     else substring(vs.key, 0, position('.', vs.key, position('.', vs.key)+1 )-1)
     {% elif target.type == 'bigquery' %}
     else concat(split(vs.key, '.')[safe_offset(0)], '.', split(vs.key, '.')[safe_offset(1)])
+    {% elif target.type == 'athena' %}
+    else split_part(vs.key, '.', 1) || '.' || split_part(vs.key, '.', 2)
     {% endif %}
     end as {{ dbt.type_string() }}) as panel_id
     , coalesce(cast(ce.encounterdate as date), cast(vs.createddatetime as date)) as observation_date

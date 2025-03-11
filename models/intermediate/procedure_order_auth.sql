@@ -2,8 +2,8 @@
 
 select
       cast(oac.contextid as {{ dbt.type_string() }} ) || '.orderauth.' || cast(oac.orderauthcptid as {{ dbt.type_string() }} ) as procedure_id
-    , cast(oac.contextid || '.' || p.enterpriseid as {{ dbt.type_string() }} ) as person_id
-    , cast(oac.contextid || '.' || p.enterpriseid as {{ dbt.type_string() }} ) as patient_id
+    , cast(oac.contextid as {{ dbt.type_string() }} ) || '.' || cast(p.enterpriseid as {{ dbt.type_string() }} ) as person_id
+    , cast(oac.contextid as {{ dbt.type_string() }} ) || '.' || cast(p.enterpriseid as {{ dbt.type_string() }} ) as patient_id
     , cast(d.contextid as {{ dbt.type_string() }} ) || '.' || cast(d.clinicalencounterid as {{ dbt.type_string() }} ) as encounter_id
     , cast(null as {{ dbt.type_string() }} ) as claim_id
     , cast(oa.proceduredatedatetime as date) as procedure_date
@@ -28,7 +28,7 @@ inner join {{ source('athena','ORDERAUTH') }} as oa
     on oac.ORDERAUTHID = oa.ORDERAUTHID and oac.contextid = oa.contextid
 inner join {{ source('athena','DOCUMENT') }} as d
     on oa.documentid = d.documentid and oa.contextid = d.contextid
-inner join {{ source('athena','PATIENT') }} as p
+inner join {{  source('athena','PATIENT') }} as p
     on d.patientid = p.patientid and d.contextid = p.contextid
 left join {{ ref('enhanced_procedure_code') }} as epc
     on  oac.procedurecode = epc.procedurecode and oac.contextid = epc.contextid

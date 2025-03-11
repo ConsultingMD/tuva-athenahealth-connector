@@ -27,7 +27,7 @@ select
     , cast('athena.' || pm.contextname as {{ dbt.type_string() }} ) as data_source
     , cast(null as {{ dbt.type_string() }} ) as file_name
     , cast(null as {{ dbt.type_timestamp() }} ) as ingest_datetime
--- select *
+
 from {{ source('athena','PATIENTMEDICATION') }} pm
 left join {{ source('athena','CHART') }} c
     on pm.chartid = c.chartid and pm.contextid = c.contextid
@@ -35,6 +35,11 @@ left join {{ source('athena','MEDICATION') }} m
     on pm.medicationid = m.medicationid and pm.contextid = m.contextid
 left join {{ source('athena','DOCUMENT') }} d
     on pm.documentid = d.documentid and pm.contextid = d.contextid
-where pm.medicationtype <> 'CLINICALPRESCRIPTION'
-and pm.deactivatedby is null and pm.deleteddatetime is null
-and not (source_code is null and source_description is null)
+where
+  pm.medicationtype <> 'CLINICALPRESCRIPTION'
+  and pm.deactivatedby is null
+  and pm.deleteddatetime is null
+  and not (
+    cast(coalesce(m.ndc, m.rxnorm, cast(m.medicationid as {{ dbt.type_string() }} )) as {{ dbt.type_string() }} ) is null -- source code
+    and cast(m.medicationname as {{ dbt.type_string() }} ) is null -- source_description
+  )

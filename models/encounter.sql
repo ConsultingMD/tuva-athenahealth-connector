@@ -22,8 +22,8 @@ select
     , cast(null as {{ dbt.type_string() }} ) as discharge_disposition_code
     , cast(null as {{ dbt.type_string() }} ) as discharge_disposition_description
     , cast(null as {{ dbt.type_string() }} ) as attending_provider_id
-    , cast(ce.contextid || '.prov.' || ce.supervisingproviderid as {{ dbt.type_string() }} ) as attending_provider_name
-    , cast(ce.contextid || '.' || d.departmentid as {{ dbt.type_string() }} ) as facility_id
+    , cast(ce.contextid as {{ dbt.type_string() }} ) || '.prov.' || cast(ce.supervisingproviderid as {{ dbt.type_string() }} ) as attending_provider_name
+    , cast(ce.contextid as {{ dbt.type_string() }} ) || '.' || cast(d.departmentid as {{ dbt.type_string() }} ) as facility_id
     , cast(d.departmentname as {{ dbt.type_string() }} ) as facility_name
     , cast(case when primary_dx.SNOMEDCODE is not null then 'snomed' end as {{ dbt.type_string() }} ) as primary_diagnosis_code_type
     , cast(primary_dx.SNOMEDCODE as {{ dbt.type_string() }} ) as primary_diagnosis_code
@@ -47,4 +47,3 @@ on ce.contextid = primary_dx.contextid and  ce.clinicalencounterid = primary_dx.
 left join {{ source('athena','DEPARTMENT') }} as d
     on ce.departmentid = d.departmentid and ce.contextid = d.contextid
 where ce.deleteddatetime is null and ce.deletedby is null
-

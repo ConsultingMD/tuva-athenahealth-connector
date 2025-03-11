@@ -1,7 +1,7 @@
 select
-      cast(cro.contextid || '.' || cro.clinicalobservationid as {{ dbt.type_string() }} ) as lab_result_id
-    , cast( cro.contextid || '.' || p.enterpriseid as {{ dbt.type_string() }} ) as person_id
-    , cast( cro.contextid || '.' || p.enterpriseid as {{ dbt.type_string() }} ) as patient_id
+      cast(cro.contextid as {{ dbt.type_string() }} ) || '.' || cast(cro.clinicalobservationid as {{ dbt.type_string() }} ) as lab_result_id
+    , cast(cro.contextid as {{ dbt.type_string() }} ) || '.' || cast(p.enterpriseid as {{ dbt.type_string() }} ) as person_id
+    , cast(cro.contextid as {{ dbt.type_string() }} ) || '.' || cast(p.enterpriseid as {{ dbt.type_string() }} ) as patient_id
     , cast(d.contextid as {{ dbt.type_string() }} ) || '.' || cast(d.clinicalencounterid as {{ dbt.type_string() }} ) as encounter_id
     , cast(cr.externalaccessionidentifier as {{ dbt.type_string() }} ) as accession_number
     , cast(case when l.loinccode is not null then 'loinc'
@@ -56,7 +56,7 @@ inner join {{ source('athena','PATIENT' ) }} as p
     on d.patientid = p.patientid and d.contextid = p.contextid
 left join {{ source('athena','LOINC' ) }} as l
     on cro.loincid = l.loincid and cro.contextid = l.contextid
-left join {{ source('athena', 'CLINICALORDERTYPE' ) }} as crcot
+left join {{ source('athena','CLINICALORDERTYPE' ) }} as crcot
     on cr.clinicalordertypeid = crcot.clinicalordertypeid
 left join {{ ref('terminology__loinc') }} as crcotl
     on crcot.loinc = crcotl.loinc
@@ -64,7 +64,7 @@ left join {{ source('athena','LOCALCLINICALLABTEMPLATELIST') }} as lcltl
     on cro.localclinicallabtemplatelistid = lcltl.localclinicallabtemplatelistid and cro.contextid = lcltl.contextid
 left join {{ source('athena','LOCALCLINICALLABTEMPLATE') }} as lclt
     on lcltl.localclinicallabtemplateid = lclt.localclinicallabtemplateid and lcltl.contextid =lclt.contextid
-left join {{ source('athena', 'CLINICALORDERTYPE' ) }} as lcltcot
+left join {{ source('athena','CLINICALORDERTYPE' ) }} as lcltcot
     on lclt.clinicalordertypeid = lcltcot.clinicalordertypeid
 left join {{ ref('terminology__loinc') }} as lcltcotl
     on lcltcot.loinc = lcltcotl.loinc

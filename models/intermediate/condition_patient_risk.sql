@@ -23,7 +23,7 @@ select
     , cast(null as {{ dbt.type_timestamp() }} ) as ingest_datetime
 -- select top 100 *
 from {{source('athena','PATIENTRISKCONDITION') }} as prc
-left join {{ source('athena', 'RISKCONDITIONSTATENAME') }} as rcsn
+left join {{ source('athena','RISKCONDITIONSTATENAME') }} as rcsn
     on prc.riskconditionstatenameid = rcsn.riskconditionstatenameid and prc.contextid = rcsn.contextid
 left join {{source('athena','PATIENT') }} p
     on prc.patientid = p.patientid and prc.contextid = p.contextid
