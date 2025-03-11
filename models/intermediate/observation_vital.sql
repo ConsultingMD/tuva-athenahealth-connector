@@ -39,9 +39,9 @@ select
     , cast('athena.' || vs.contextname  as {{ dbt.type_string() }} ) as data_source
     , cast(null as {{ dbt.type_string() }} ) as file_name
     , cast(null as {{ dbt.type_timestamp() }} ) as ingest_datetime
-from {{ source('athena','dataview_imports__vitalsign__v1') }} vs
-inner join {{ source('athena','dataview_imports__clinicalencounter__v1') }} ce
+from {{ source('athena','VITALSIGN') }} vs
+inner join {{ source('athena','CLINICALENCOUNTER') }} ce
     on vs.clinicalencounterid = ce.clinicalencounterid and vs.contextid = ce.contextid
-inner join {{ source('athena','dataview_imports__patient__v1') }} P
+inner join {{ source('athena','PATIENT') }} P
     on ce.patientid = p.patientid and ce.contextid = p.contextid
 where vs.deletedby is null and vs.deleteddatetime is null

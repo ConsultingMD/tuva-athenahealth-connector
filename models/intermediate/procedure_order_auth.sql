@@ -23,12 +23,12 @@ select
     , cast(null as {{ dbt.type_string() }} ) as file_name
     , cast(null as {{ dbt.type_timestamp() }} ) as ingest_datetime
 --select *
-From {{  source('athena','dataview_imports__orderauthcpt__v1') }} as oac
-inner join {{ source('athena','dataview_imports__orderauth__v1') }} as oa
+From {{  source('athena','ORDERAUTHCPT') }} as oac
+inner join {{ source('athena','ORDERAUTH') }} as oa
     on oac.ORDERAUTHID = oa.ORDERAUTHID and oac.contextid = oa.contextid
-inner join {{ source('athena','dataview_imports__document__v1') }} as d
+inner join {{ source('athena','DOCUMENT') }} as d
     on oa.documentid = d.documentid and oa.contextid = d.contextid
-inner join {{  source('athena','dataview_imports__patient__v1') }} as p
+inner join {{  source('athena','PATIENT') }} as p
     on d.patientid = p.patientid and d.contextid = p.contextid
 left join {{ ref('enhanced_procedure_code') }} as epc
     on  oac.procedurecode = epc.procedurecode and oac.contextid = epc.contextid

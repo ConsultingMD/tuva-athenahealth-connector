@@ -23,12 +23,12 @@ select
     , cast(null as {{ dbt.type_string() }} ) as file_name
     , cast(null as {{ dbt.type_timestamp() }} ) as ingest_datetime
 --select *
-From {{ source('athena','dataview_imports__clinicalservice__v1') }} as  cs
-inner join {{ source('athena','dataview_imports__clinicalserviceprocedurecode__v1') }} as cspc
+From {{ source('athena','CLINICALSERVICE') }} as  cs
+inner join {{ source('athena','CLINICALSERVICEPROCEDURECODE') }} as cspc
     on cs.CLINICALSERVICEID = cspc.CLINICALSERVICEID and cs.contextid = cspc.contextid
-inner join {{ source('athena','dataview_imports__clinicalencounter__v1') }} as ce
+inner join {{ source('athena','CLINICALENCOUNTER') }} as ce
     on cs.CLINICALENCOUNTERID = ce.CLINICALENCOUNTERID and cs.contextid = ce.contextid
-inner join {{ source('athena','dataview_imports__patient__v1') }} as p
+inner join {{ source('athena','PATIENT') }} as p
     on ce.PATIENTID = p.patientid  and cs.contextid = p.contextid
 left join {{ ref('enhanced_procedure_code') }}  as epc
     on  cspc.procedurecode = epc.procedurecode and cs.contextid = epc.contextid

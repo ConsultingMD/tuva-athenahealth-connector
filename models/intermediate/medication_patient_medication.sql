@@ -28,12 +28,12 @@ select
     , cast(null as {{ dbt.type_string() }} ) as file_name
     , cast(null as {{ dbt.type_timestamp() }} ) as ingest_datetime
 
-from {{ source('athena','dataview_imports__patientmedication__v1') }} pm
-left join {{ source('athena','dataview_imports__chart__v1') }} c
+from {{ source('athena','PATIENTMEDICATION') }} pm
+left join {{ source('athena','CHART') }} c
     on pm.chartid = c.chartid and pm.contextid = c.contextid
-left join {{ source('athena','dataview_imports__medication__v1') }} m
+left join {{ source('athena','MEDICATION') }} m
     on pm.medicationid = m.medicationid and pm.contextid = m.contextid
-left join {{ source('athena','dataview_imports__document__v1') }} d
+left join {{ source('athena','DOCUMENT') }} d
     on pm.documentid = d.documentid and pm.contextid = d.contextid
 where
   pm.medicationtype <> 'CLINICALPRESCRIPTION'

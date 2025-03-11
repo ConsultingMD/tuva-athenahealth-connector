@@ -11,4 +11,4 @@ select
     , cast(null as {{ dbt.type_timestamp() }} ) as ingest_datetime
     , p.providertype as credentials
     , '{{ dbt_utils.pretty_time(format="%Y-%m-%d %H:%M:%S") }}' as tuva_last_run
-from {{ source('athena','dataview_imports__provider__v1') }} p
+from {{ source('athena','PROVIDER') }} p

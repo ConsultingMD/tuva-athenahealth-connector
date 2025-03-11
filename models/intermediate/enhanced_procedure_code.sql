@@ -22,7 +22,7 @@ from (
     select
       *,
       row_number() over (partition by contextid,procedurecode order by case when deleteddatetime is null then 0 else 1 end, coalesce(lastmodifieddatetime,createddatetime) desc) as rn
-    from {{ source('athena','dataview_imports__procedurecode__v1' ) }}
+    from {{ source('athena','PROCEDURECODE' ) }}
 ) pc0
 where
   pc0.rn = 1

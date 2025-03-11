@@ -23,10 +23,10 @@ select
     , cast('athena.' || vc.contextname as {{ dbt.type_string() }} ) as data_source
     , cast(null as {{ dbt.type_string() }} ) as file_name
     , cast(null as {{ dbt.type_timestamp() }} ) as ingest_datetime
-from {{ source('athena','dataview_imports__visitcharge__v1') }} as vc
-inner join {{ source('athena','dataview_imports__visit__v1') }} as v
+from {{ source('athena','VISITCHARGE') }} as vc
+inner join {{ source('athena','VISIT') }} as v
     on vc.visitid = v.visitid and vc.contextid = v.contextid
-inner join {{  source('athena','dataview_imports__patient__v1') }} as p
+inner join {{  source('athena','PATIENT') }} as p
     on v.patientid = p.patientid and v.contextid = p.contextid
 left join {{ref('enhanced_procedure_code') }} as epc
     on  vc.procedurecode = epc.procedurecode and vc.contextid = epc.contextid
