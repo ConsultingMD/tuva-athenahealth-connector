@@ -1,10 +1,8 @@
-
-
 select
       cast(cspc.contextid as {{ dbt.type_string() }}) || '.clinserv.' || cast(cspc.clinicalserviceproccodeid as {{ dbt.type_string() }}) as procedure_id
-    , cast(cs.contextid || '.' || p.enterpriseid as {{ dbt.type_string() }}) as person_id
-    , cast(cs.contextid || '.' || p.enterpriseid as {{ dbt.type_string() }}) as patient_id
-    , cast(cs.contextid || '.' || ce.clinicalencounterid as {{ dbt.type_string() }}) as encounter_id
+    , cast(cs.contextid as {{ dbt.type_string() }}) || '.' || cast(p.enterpriseid as {{ dbt.type_string() }}) as person_id
+    , cast(cs.contextid as {{ dbt.type_string() }}) || '.' || cast(p.enterpriseid as {{ dbt.type_string() }}) as patient_id
+    , cast(cs.contextid as {{ dbt.type_string() }}) || '.' || cast(ce.clinicalencounterid as {{ dbt.type_string() }}) as encounter_id
     , cast(null as {{ dbt.type_string() }}) as claim_id
     , cast(ce.encounterdate as date) as procedure_date
     , cast('hcpcs' as {{ dbt.type_string() }}) as source_code_type

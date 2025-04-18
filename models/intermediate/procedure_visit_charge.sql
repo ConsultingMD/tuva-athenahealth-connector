@@ -26,8 +26,9 @@ select
 from {{ source('athena','VISITCHARGE') }} as vc
 inner join {{ source('athena','VISIT') }} as v
     on vc.visitid = v.visitid and vc.contextid = v.contextid
-inner join {{  source('athena','PATIENT') }} as p
+inner join {{ source('athena','PATIENT') }} as p
     on v.patientid = p.patientid and v.contextid = p.contextid
 left join {{ref('enhanced_procedure_code') }} as epc
     on  vc.procedurecode = epc.procedurecode and vc.contextid = epc.contextid
 where vc.deletedby is null and vc.deleteddatetime is null
+

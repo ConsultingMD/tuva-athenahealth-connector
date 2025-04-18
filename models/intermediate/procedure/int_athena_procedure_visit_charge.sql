@@ -1,9 +1,7 @@
 select
-      cast(vc.contextid as {{ dbt.type_string() }}) ||
-        '.visitcharge.' ||
-        cast(vc.visitchargeid as {{ dbt.type_string() }}) as procedure_id
-    , cast(vc.contextid || '.' || p.enterpriseid as {{ dbt.type_string() }}) as person_id
-    , cast(vc.contextid || '.' || p.enterpriseid as {{ dbt.type_string() }}) as patient_id
+      cast(vc.contextid as {{ dbt.type_string() }}) || '.visitcharge.' || cast(vc.visitchargeid as {{ dbt.type_string() }}) as procedure_id
+    , cast(vc.contextid as {{ dbt.type_string() }}) || '.' || cast(p.enterpriseid as {{ dbt.type_string() }}) as person_id
+    , cast(vc.contextid as {{ dbt.type_string() }}) || '.' || cast(p.enterpriseid as {{ dbt.type_string() }}) as patient_id
     , cast(null as {{ dbt.type_string() }}) as encounter_id
     , cast(null as {{ dbt.type_string() }}) as claim_id
     , cast(vc.fromdatedatetime as date) as procedure_date
@@ -18,7 +16,7 @@ select
     , cast(epc.mod3 as {{ dbt.type_string() }}) as modifier_3
     , cast(epc.mod4 as {{ dbt.type_string() }}) as modifier_4
     , cast(epc.mod5 as {{ dbt.type_string() }}) as modifier_5
-    , cast(vc.contextid || '.prov.' || vc.providerid as {{ dbt.type_string() }}) as practitioner_id
+    , cast(vc.contextid as {{ dbt.type_string() }}) || '.prov.' || cast(vc.providerid as {{ dbt.type_string() }}) as practitioner_id
     , cast('athena.' || vc.contextname as {{ dbt.type_string() }}) as data_source
     , cast(null as {{ dbt.type_string() }}) as file_name
     , cast(null as {{ dbt.type_timestamp() }}) as ingest_datetime

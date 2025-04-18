@@ -1,7 +1,7 @@
 select
-      cast(cro.contextid || '.' || cro.clinicalobservationid as {{ dbt.type_string() }}) as lab_result_id
-    , cast(cro.contextid || '.' || p.enterpriseid as {{ dbt.type_string() }}) as person_id
-    , cast(cro.contextid || '.' || p.enterpriseid as {{ dbt.type_string() }}) as patient_id
+      cast(cro.contextid as {{ dbt.type_string() }}) || '.' || cast(cro.clinicalobservationid as {{ dbt.type_string() }}) as lab_result_id
+    , cast(cro.contextid as {{ dbt.type_string() }}) || '.' || cast(p.enterpriseid as {{ dbt.type_string() }}) as person_id
+    , cast(cro.contextid as {{ dbt.type_string() }}) || '.' || cast(p.enterpriseid as {{ dbt.type_string() }}) as patient_id
     , cast(d.contextid as {{ dbt.type_string() }}) || '.' || cast(d.clinicalencounterid as {{ dbt.type_string() }}) as encounter_id
     , cast(cr.externalaccessionidentifier as {{ dbt.type_string() }}) as accession_number
     , cast(case when l.loinccode is not null then 'loinc'

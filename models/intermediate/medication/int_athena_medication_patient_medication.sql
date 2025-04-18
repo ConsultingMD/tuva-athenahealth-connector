@@ -35,5 +35,9 @@ left outer join {{ ref('stg_athena_medication') }} as m
     on pm.medicationid = m.medicationid and pm.contextid = m.contextid
 left outer join {{ ref('stg_athena_document') }} as d
     on pm.documentid = d.documentid and pm.contextid = d.contextid
-where pm.medicationtype <> 'CLINICALPRESCRIPTION'
-and not (source_code is null and source_description is null)
+where 
+  pm.medicationtype <> 'CLINICALPRESCRIPTION'
+  and not (
+    cast(coalesce(m.ndc, m.rxnorm, cast(m.medicationid as {{ dbt.type_string() }})) as {{ dbt.type_string() }}) is null -- source code is null
+    and cast(m.medicationname as {{ dbt.type_string() }}) is null -- source_description is null
+  )

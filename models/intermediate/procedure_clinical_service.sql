@@ -33,3 +33,4 @@ inner join {{ source('athena','PATIENT') }} as p
 left join {{ ref('enhanced_procedure_code') }}  as epc
     on  cspc.procedurecode = epc.procedurecode and cs.contextid = epc.contextid
 where cspc.deletedby is null and cspc.deleteddatetime is null
+

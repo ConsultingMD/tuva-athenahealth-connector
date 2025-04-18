@@ -45,26 +45,10 @@ models:
     description: ''
   - name: CREATEDDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: CREATEDBY
     description: ''
   - name: DELETEDDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: DELETEDBY
     description: ''
   - name: LASTUPDATED

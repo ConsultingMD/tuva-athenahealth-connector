@@ -14,7 +14,7 @@ select
     , cast(ce.contextid as {{ dbt.type_string() }}) || '.' || cast(p.enterpriseid as {{ dbt.type_string() }}) as patient_id
     , cast(case when ce.clinicalencountertype = 'VISIT' then 'office visit' else 'other' end as {{ dbt.type_string() }}) as encounter_type
     , cast(ce.encounterdate as date) as encounter_start_date
-    , cast(case when ce.clinicalencountertype = 'VISIT' then encounter_start_date else null end as date) as encounter_end_date
+    , cast(case when ce.clinicalencountertype = 'VISIT' then ce.encounterdate else null end as date) as encounter_end_date
     , cast(null as {{ dbt.type_int() }}) as length_of_stay
     , cast(null as {{ dbt.type_string() }}) as admit_source_code
     , cast(null as {{ dbt.type_string() }}) as admit_source_description
@@ -22,9 +22,9 @@ select
     , cast(null as {{ dbt.type_string() }}) as admit_type_description
     , cast(null as {{ dbt.type_string() }}) as discharge_disposition_code
     , cast(null as {{ dbt.type_string() }}) as discharge_disposition_description
-    , cast(ce.contextid || '.prov.' || ce.providerid as {{ dbt.type_string() }}) as attending_provider_id
+    , cast(ce.contextid as {{ dbt.type_string() }}) || '.prov.' || cast(ce.providerid as {{ dbt.type_string() }}) as attending_provider_id
     , cast(provider.providerfirstname || ' ' || provider.providerlastname || ' ' || provider.providertype as {{ dbt.type_string() }}) as attending_provider_name
-    , cast(ce.contextid || '.' || d.departmentid as {{ dbt.type_string() }}) as facility_id
+    , cast(ce.contextid as {{ dbt.type_string() }}) || '.' || cast(d.departmentid as {{ dbt.type_string() }}) as facility_id
     , cast(d.departmentname as {{ dbt.type_string() }}) as facility_name
     , cast(case when primary_dx.snomedcode is not null then 'snomed' end as {{ dbt.type_string() }}) as primary_diagnosis_code_type
     , cast(primary_dx.snomedcode as {{ dbt.type_string() }}) as primary_diagnosis_code

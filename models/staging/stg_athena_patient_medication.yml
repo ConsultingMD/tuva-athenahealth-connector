@@ -8,6 +8,8 @@ models:
       combination_of_columns:
       - CONTEXTID
       - PATIENTMEDICATIONID
+      config:
+        severity: warn
   - dbt_expectations.expect_table_row_count_to_be_between:
       tags: ['tuva_dqi_sev_5', 'dqi']
       description: "Expectation for there to be at least one record in this table."

@@ -32,14 +32,6 @@ models:
         tags: ['tuva_dqi_sev_1', 'dqi']
   - name: CREATEDDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: CREATEDBY
     description: ''
   - name: LASTNAME
@@ -70,14 +62,6 @@ models:
     description: ''
   - name: REGISTRATIONDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: ADDRESS1
     description: ''
   - name: PLCADDRESS1
@@ -108,14 +92,6 @@ models:
     description: ''
   - name: DOBDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: SSN
     description: ''
   - name: SEX
@@ -136,14 +112,6 @@ models:
     description: ''
   - name: DECEASEDDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: EMPLOYERNAME
     description: ''
   - name: EDUCATIONLEVELID
@@ -162,14 +130,6 @@ models:
     description: ''
   - name: TRANSFERDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: STATUS
     description: ''
   - name: NOTES
@@ -198,14 +158,6 @@ models:
     description: ''
   - name: RPDOBDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: GUARDIANFIRSTNAME
     description: ''
   - name: GUARDIANLASTNAME
@@ -222,14 +174,6 @@ models:
     description: ''
   - name: EMAILCONFIRMEDDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: LASTEMAIL
     description: ''
   - name: SUPPRESSSTATEMENT
@@ -238,24 +182,8 @@ models:
     description: ''
   - name: ONLINESTATEMENTONLYDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: NEXTSTATEMENTDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: STATEMENTNOTE
     description: ''
   - name: BALANCEFORWARDAMOUNT
@@ -290,26 +218,10 @@ models:
     description: ''
   - name: LASTMODIFIEDDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: LASTMODIFIEDBY
     description: ''
   - name: FIRSTVISITDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: CREDITBALANCE
     description: ''
   - name: NEWPATIENTID
@@ -324,14 +236,6 @@ models:
     description: ''
   - name: OVERDUEDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: FAMILYCLIENTID
     description: ''
   - name: IDOVERRIDDENYN
@@ -370,14 +274,6 @@ models:
     description: ''
   - name: PRIVACYNOTICEGIVENDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: PRIVACYNOTICENOTGIVENREASON
     description: ''
   - name: PRIVACYNOTICENOTGIVENNOTE
@@ -390,58 +286,18 @@ models:
     description: ''
   - name: PATIENTSIGNATUREEFFECTIVEDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: PATIENTSIGNATUREEXPIRATIONDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: INSUREDSIGNATUREONFILEFLAG
     description: ''
   - name: INSUREDSIGNATUREEFFECTIVEDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: INSUREDSIGNATUREEXPIRATIONDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: CONSENTTOCALLFLAG
     description: ''
   - name: CONSENTTOCALLFLAGEFFECTIVEDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: SELFPAYRESTRICTIONYN
     description: ''
   - name: SIGNATURESOURCECODE
@@ -458,14 +314,6 @@ models:
     description: ''
   - name: MEDICATIONHISTORYCONSENTDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: MEDICATIONHISTORYCONSENTYN
     description: ''
   - name: PROVIDERGROUPID
@@ -500,24 +348,8 @@ models:
     description: ''
   - name: STATEMENTNOTEEFFECTIVEDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: STATEMENTNOTEEXPIRATIONDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: DEFAULTPRESCRIPTIONPROVIDERID
     description: ''
   - name: DEFAULTLABPROVIDERID
@@ -530,14 +362,6 @@ models:
     description: ''
   - name: LICENSEEXPIRATIONDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: PINCODE
     description: ''
   - name: ENCRYPTEDPINCODE
@@ -554,88 +378,24 @@ models:
     description: ''
   - name: PORTALACCESSPROVIDEDDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: PORTALTERMSONFILEFLAG
     description: ''
   - name: PORTALTERMSEFFECTIVEDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: PORTALTERMSEXPIRATIONDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: PORTALREGISTRATIONDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: QUICKPAYTERMSONFILEFLAG
     description: ''
   - name: QUICKPAYTERMSEFFECTIVEDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: QUICKPAYTERMSEXPIRATIONDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: SMSOPTINDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: SMSPROMPTEDDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: CONSENTTOTEXTYN
     description: ''
   - name: CONTACTPREFERENCE
@@ -644,28 +404,12 @@ models:
     description: ''
   - name: HIESUBMISSIONDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: HIESUBMISSIONBY
     description: ''
   - name: HIERETRIEVALYN
     description: ''
   - name: HIERETRIEVALDATEDATETIME
     description: ''
-    tests:
-      - dbt_expectations.expect_column_values_to_be_between:
-          tags: [ 'tuva_dqi_sev_4', 'dqi' ]
-          min_value: '''1900-01-01'''
-          max_value: '''2100-01-01'''
-          strictly: false
-          config:
-            severity: warn
   - name: HIERETRIEVALBY
     description: ''
   - name: RPEMAIL

@@ -65,3 +65,4 @@ left join {{ ref('terminology__loinc') }} as lcltcotl
 where cr.clinicalordertypegroup <> 'LAB'
 and cro.deletedby is null and cro.deleteddatetime is null
 and d.deleteddatetime is null and d.deletedby is null and  d.STATUS <> 'DELETED'
+

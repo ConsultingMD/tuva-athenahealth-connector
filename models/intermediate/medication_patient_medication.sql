@@ -27,7 +27,6 @@ select
     , cast('athena.' || pm.contextname as {{ dbt.type_string() }} ) as data_source
     , cast(null as {{ dbt.type_string() }} ) as file_name
     , cast(null as {{ dbt.type_timestamp() }} ) as ingest_datetime
-
 from {{ source('athena','PATIENTMEDICATION') }} pm
 left join {{ source('athena','CHART') }} c
     on pm.chartid = c.chartid and pm.contextid = c.contextid
@@ -43,3 +42,4 @@ where
     cast(coalesce(m.ndc, m.rxnorm, cast(m.medicationid as {{ dbt.type_string() }} )) as {{ dbt.type_string() }} ) is null -- source code
     and cast(m.medicationname as {{ dbt.type_string() }} ) is null -- source_description
   )
+

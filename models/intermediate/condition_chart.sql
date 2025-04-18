@@ -30,3 +30,4 @@ inner join {{source('athena','CHART')}} as c
 inner join {{source('athena','ICDCODEALL')}} as i
     on csi.icdcodeallid = i.icdcodeid and csi.contextid = i.contextid
 where csi.deletedby is null and csi.deleteddatetime is null
+

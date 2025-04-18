@@ -5,7 +5,6 @@ select
     , procedurecodedescription
     , createddatetime
     , deleteddatetime
-    , lastmodifieddatetime,
-
+    , lastmodifieddatetime
 from {{ source('athena','PROCEDURECODE' ) }}
 where deleteddatetime is null

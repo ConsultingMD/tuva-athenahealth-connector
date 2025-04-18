@@ -1,8 +1,8 @@
 select
-       cast(csd.contextid as {{ dbt.type_string() }}) || '.clinicalservice.' || cast(csd.clinicalservicediagnosisid as {{ dbt.type_string() }}) as condition_id --event id?
+      cast(csd.contextid as {{ dbt.type_string() }}) || '.clinicalservice.' || cast(csd.clinicalservicediagnosisid as {{ dbt.type_string() }}) as condition_id --event id?
     , cast(csd.contextid as {{ dbt.type_string() }}) || '.' || cast(p.enterpriseid as {{ dbt.type_string() }}) as person_id
     , cast(csd.contextid as {{ dbt.type_string() }}) || '.' || cast(p.enterpriseid as {{ dbt.type_string() }}) as patient_id
-    , cast(csd.contextid || '.' || ce.clinicalencounterid as {{ dbt.type_string() }}) as encounter_id
+    , cast(csd.contextid as {{ dbt.type_string() }}) || '.' || cast(ce.clinicalencounterid as {{ dbt.type_string() }}) as encounter_id
     , cast(null as {{ dbt.type_string() }}) as claim_id
     , cast(csd.createddatetime as date) as recorded_date
     , cast(null as date) as onset_date

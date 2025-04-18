@@ -1,7 +1,7 @@
 select
       cast(oac.contextid as {{ dbt.type_string() }}) || '.orderauth.' || cast(oac.orderauthcptid as {{ dbt.type_string() }}) as procedure_id
-    , cast(oac.contextid || '.' || p.enterpriseid as {{ dbt.type_string() }}) as person_id
-    , cast(oac.contextid || '.' || p.enterpriseid as {{ dbt.type_string() }}) as patient_id
+    , cast(oac.contextid as {{ dbt.type_string() }}) || '.' || cast(p.enterpriseid as {{ dbt.type_string() }}) as person_id
+    , cast(oac.contextid as {{ dbt.type_string() }}) || '.' || cast(p.enterpriseid as {{ dbt.type_string() }}) as patient_id
     , cast(d.contextid as {{ dbt.type_string() }}) || '.' || cast(d.clinicalencounterid as {{ dbt.type_string() }}) as encounter_id
     , cast(null as {{ dbt.type_string() }}) as claim_id
     , cast(oa.proceduredatedatetime as date) as procedure_date

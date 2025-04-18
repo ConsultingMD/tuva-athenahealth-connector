@@ -28,9 +28,10 @@ inner join {{ source('athena','ORDERAUTH') }} as oa
     on oac.ORDERAUTHID = oa.ORDERAUTHID and oac.contextid = oa.contextid
 inner join {{ source('athena','DOCUMENT') }} as d
     on oa.documentid = d.documentid and oa.contextid = d.contextid
-inner join {{  source('athena','PATIENT') }} as p
+inner join {{ source('athena','PATIENT') }} as p
     on d.patientid = p.patientid and d.contextid = p.contextid
 left join {{ ref('enhanced_procedure_code') }} as epc
     on  oac.procedurecode = epc.procedurecode and oac.contextid = epc.contextid
 where oac.deletedby is null and oac.deleteddatetime is null
 and d.deleteddatetime is null and d.deletedby is null and d.STATUS <> 'DELETED'
+
