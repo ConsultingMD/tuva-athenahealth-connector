@@ -31,3 +31,4 @@ inner join {{ source('athena','PATIENT') }} as p
 left join {{ source('athena','ICDCODEALL') }} as i
     on cd.icdcodeid = i.icdcodeid and cd.contextid = i.contextid
 where cd.deletedby is null and cd.deleteddatetime is null
+

@@ -1,0 +1,34 @@
+version: 2
+models:
+- name: int_athena_practitioner_clinical_provider
+  description: ''
+  columns:
+  - name: PRACTITIONER_ID
+    description: ''
+    tests:
+    - not_null:
+        tags: ['tuva_dqi_sev_1', 'dqi']
+    - unique:
+        tags: ['tuva_dqi_sev_1', 'dqi']
+  - name: NPI
+    description: ''
+  - name: FIRST_NAME
+    description: ''
+  - name: LAST_NAME
+    description: ''
+  - name: PRACTICE_AFFILIATION
+    description: ''
+  - name: SPECIALTY
+    description: ''
+  - name: SUB_SPECIALTY
+    description: ''
+  - name: DATA_SOURCE
+    description: ''
+  - name: FILE_NAME
+    description: ''
+  - name: INGEST_DATETIME
+    description: ''
+  - name: CREDENTIALS
+    description: ''
+  - name: TUVA_LAST_RUN
+    description: ''

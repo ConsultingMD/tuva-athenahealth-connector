@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: athena
-    database: ATHENA
+    database: ATHENAHEALTH
     schema: ATHENAONE
     tables:
       - name: CHART

@@ -45,3 +45,4 @@ inner join {{ source('athena','CLINICALENCOUNTER') }} ce
 inner join {{ source('athena','PATIENT') }} P
     on ce.patientid = p.patientid and ce.contextid = p.contextid
 where vs.deletedby is null and vs.deleteddatetime is null
+

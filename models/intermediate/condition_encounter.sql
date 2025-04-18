@@ -32,3 +32,4 @@ inner join {{source('athena','CLINICALENCOUNTERDXICD10')}} as ceicd
 inner join {{source('athena','ICDCODEALL')}} as  i
     on ceicd.icdcodeid  = i.icdcodeid and ce.contextid = i.contextid
 where ced.deletedby is null and ced.deleteddatetime is null
+

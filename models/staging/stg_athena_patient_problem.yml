@@ -1,0 +1,87 @@
+version: 2
+models:
+- name: stg_athena_patient_problem
+  description: ''
+  tests:
+  - dbt_utils.unique_combination_of_columns:
+      tags: ['tuva_dqi_sev_1', 'dqi']
+      combination_of_columns:
+      - CONTEXTID
+      - PATIENTPROBLEMID
+  - dbt_expectations.expect_table_row_count_to_be_between:
+      tags: ['tuva_dqi_sev_5', 'dqi']
+      description: "Expectation for there to be at least one record in this table."
+      min_value: 1
+      strictly: false
+      config:
+        severity: warn
+  columns:
+  - name: CONTEXTID
+    description: ''
+    tests:
+    - not_null:
+        tags: ['tuva_dqi_sev_1', 'dqi']
+  - name: CONTEXTNAME
+    description: ''
+  - name: CONTEXTPARENTCONTEXTID
+    description: ''
+  - name: PATIENTPROBLEMID
+    description: ''
+    tests:
+    - not_null:
+        tags: ['tuva_dqi_sev_1', 'dqi']
+  - name: TYPE
+    description: ''
+  - name: PATIENTID
+    description: ''
+  - name: CHARTID
+    description: ''
+    tests:
+    - not_null:
+        tags: ['tuva_dqi_sev_3', 'dqi']
+        config:
+          severity: warn
+    - relationships:
+        to: ref('stg_athena_chart')
+        field: CHARTID
+        tags: ['tuva_dqi_sev_3', 'dqi']
+        config:
+          severity: warn
+  - name: DIAGNOSISCODE
+    description: ''
+  - name: SNOMEDCODE
+    description: ''
+  - name: PROBLEMLISTNAME
+    description: ''
+  - name: LATERALITY
+    description: ''
+  - name: STATUS
+    description: ''
+  - name: ONSETDATE
+    description: ''
+  - name: DEACTIVATEDDATETIME
+    description: ''
+  - name: DEACTIVATEDBY
+    description: ''
+  - name: REACTIVATEDDATETIME
+    description: ''
+  - name: REACTIVATEDBY
+    description: ''
+  - name: SOURCE
+    description: ''
+  - name: CREATEDDATETIME
+    description: ''
+  - name: CREATEDBY
+    description: ''
+  - name: DELETEDDATETIME
+    description: ''
+  - name: DELETEDBY
+    description: ''
+  - name: LASTMODIFIEDDATETIME
+    description: ''
+  - name: LASTMODIFIEDBY
+    description: ''
+  - name: NOTE
+    description: ''
+  - name: LASTUPDATED
+    description: ''

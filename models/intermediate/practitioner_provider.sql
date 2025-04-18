@@ -12,3 +12,4 @@ select
     , p.providertype as credentials
     , '{{ dbt_utils.pretty_time(format="%Y-%m-%d %H:%M:%S") }}' as tuva_last_run
 from {{ source('athena','PROVIDER') }} p
+
